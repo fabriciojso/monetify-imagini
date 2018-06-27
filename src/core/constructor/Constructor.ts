@@ -13,5 +13,5 @@ export abstract class Constructor<Component> {
     this.component = component;
   }
 
-  public abstract run(): Promise<Jimp>;
+  public abstract async run(): Promise<Jimp>;
 }

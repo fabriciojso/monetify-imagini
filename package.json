@@ -33,7 +33,7 @@
     "dev": "ts-node-dev --inspect --no-notify -r ./register-ts-config-path.ts ./src/index.ts",
     "nodemon": "nodemon",
     "tslint:fix": "tslint --fix -c tslint.json \"*.{ts,tsx}\"",
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "webpack"
   },
   "keywords": [
@@ -46,6 +46,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@types/es6-promise": "^3.3.0",
     "jimp": "^0.2.28"
   }
 }

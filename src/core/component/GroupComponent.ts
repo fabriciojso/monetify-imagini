@@ -5,7 +5,7 @@ export class GroupComponent<Component> {
     this.items = items;
   }
 
-  public getItems(): Array<Component> {
+  public getItems(): Component[] {
     return this.items;
   }
 

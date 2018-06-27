@@ -1,28 +1,14 @@
-import { Background } from "./Background";
-import { IBackground } from "../interface/IBackground";
-import { GroupComponent } from "../component/GroupComponent";
-import { Gender } from "../enum/Gender";
-import { IUser } from "../interface/IUser";
-import { readFileSync } from "fs";
+import { readFileSync } from 'fs';
+import { backgroundGroupComponent } from '../component/GroupComponent.test';
+import { userExemple } from '../interface/IUser.test';
+import { Background } from './Background';
 
-const backgroundExemple: IBackground = {
-  image: 'resources/tests/applications/01/background.png'
-}
-const backgroundGroupComponent = new GroupComponent<IBackground>([backgroundExemple]);
-
-const userExemple: IUser = {
-  name: 'Fabricio',
-  picture: 'resources/fabricio.jpg',
-  birthday: new Date('1995-03-30 GMT-0300'),
-  gender: Gender.Male
-};
-
-const background = new Background(undefined, userExemple, backgroundGroupComponent);
+export const background = new Background(undefined, userExemple, backgroundGroupComponent);
 const original = 'resources/tests/applications/01/background.png';
 
-it('Gerando um background', () => {
-  expect.assertions(1);
-  return background
-        .run()
-        .then(image => expect(image.bitmap.data.compare(readFileSync(original))).toEqual(1));
-})
+describe('Gera-se uma imagem com o background definido e o valida com o exemplo pré-definido', () => {
+  test('Gerando um background', async () => {
+    const backgroundTemp = await background.run();
+    expect(backgroundTemp.bitmap.data.compare(readFileSync(original))).toEqual(1);
+  });
+});
