@@ -1,3 +1,5 @@
+import { GroupComponent } from '../component/GroupComponent';
+
 export interface IApplication {
-  getComponents(): any[];
+  getComponents(): Array<GroupComponent<any>>;
 }

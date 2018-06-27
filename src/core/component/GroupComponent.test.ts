@@ -1,14 +1,21 @@
 import { IBackground } from '../interface/IBackground';
-import { backgroundExemple } from '../interface/IBackground.test';
-import { IPicture } from '../interface/IPicture';
-import { pictureExemple1, pictureExemple2 } from '../interface/IPicture.test';
 import { GroupComponent } from './GroupComponent';
 
-export const backgroundGroupComponent = new GroupComponent<IBackground>([backgroundExemple]);
-export const pictureGroupComponent01 = new GroupComponent<IPicture>([pictureExemple1]);
-export const pictureGroupComponent02 = new GroupComponent<IPicture>([pictureExemple2]);
+const backgroundExemple: IBackground = {
+  image: 'resources/tests/applications/01/background1.png'
+};
+const backgroundExemple2: IBackground = {
+  image: 'resources/tests/applications/01/background2.png'
+};
+const backgroundGroupComponent = new GroupComponent<IBackground>([backgroundExemple]);
+backgroundGroupComponent.addItem(backgroundExemple2);
+
+const backgroundGroupComponent2 = new GroupComponent<IBackground>();
 
 test('Valida a classe GroupComponent que agrupa componentes', () => {
   expect(backgroundGroupComponent.getItems()).toBeInstanceOf(Array);
-  expect(pictureGroupComponent01.getItems()).toBeInstanceOf(Array);
+  expect(backgroundGroupComponent.getItems().length).toEqual(2);
+  expect(backgroundGroupComponent.getItems()[0].image).toEqual('resources/tests/applications/01/background1.png');
+  expect(backgroundGroupComponent.getItems()[1].image).toEqual('resources/tests/applications/01/background2.png');
+  expect(backgroundGroupComponent2.getItems().length).toEqual(0);
 });
