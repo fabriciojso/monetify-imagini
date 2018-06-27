@@ -27,7 +27,8 @@
     "tslint-loader": "^3.6.0",
     "tslint-plugin-prettier": "^1.3.0",
     "typescript": "^2.9.2",
-    "webpack": "^3.12.0"
+    "webpack": "^3.12.0",
+    "@types/es6-promise": "^3.3.0"
   },
   "scripts": {
     "dev": "ts-node-dev --inspect --no-notify -r ./register-ts-config-path.ts ./src/index.ts",
@@ -46,7 +47,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@types/es6-promise": "^3.3.0",
+    "@bouzuya/compare-images": "^0.2.0",
     "jimp": "^0.2.28"
   }
 }
